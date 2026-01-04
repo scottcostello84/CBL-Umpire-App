@@ -1,0 +1,11 @@
+{
+  "fees": {
+    "toronto_extra_fee": 10,
+    "crew_chief_bonus": 15,
+    "pitch_clock_operator_bonus": 20
+  },
+  "notes": {
+    "pitch_clock_operator_bonus": "Negotiable next month",
+    "mileage_components": "All mileage components are negotiable next month"
+  }
+}
