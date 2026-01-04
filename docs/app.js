@@ -20,10 +20,14 @@ function renderError(msg) {
 
 async function loadData() {
   try {
-    // From /docs -> go up one level to /data
+    // GitHub Pages needs the repo name in the path
+    const base = window.location.pathname.includes("CBL-Umpire-App")
+      ? "/CBL-Umpire-App"
+      : "";
+
     const [rulesRes, stadiumsRes] = await Promise.all([
-      fetch("../data/rules.json"),
-      fetch("../data/stadiums.json"),
+      fetch(`${base}/data/rules.json`),
+      fetch(`${base}/data/stadiums.json`),
     ]);
 
     RULES = await rulesRes.json();
@@ -33,7 +37,7 @@ async function loadData() {
     const sel = el("stadiumSelect");
     sel.innerHTML = `<option value="">Select a stadium…</option>`;
 
-    const list = (STADIUMS.stadiums || []);
+    const list = STADIUMS.stadiums || [];
     for (const s of list) {
       const opt = document.createElement("option");
       opt.value = s.name;
@@ -44,7 +48,9 @@ async function loadData() {
     renderError("Enter details and click Calculate.");
   } catch (err) {
     console.error(err);
-    renderError("Could not load rules/stadiums. Make sure data/rules.json and data/stadiums.json exist.");
+    renderError(
+      "Could not load rules/stadiums. Make sure data/rules.json and data/stadiums.json exist."
+    );
   }
 }
 
@@ -60,7 +66,9 @@ function calculate() {
 
   const torontoExtra = isToronto ? Number(fees.toronto_extra_fee || 0) : 0;
   const crewChiefBonus = isCrewChief ? Number(fees.crew_chief_bonus || 0) : 0;
-  const pitchClockBonus = isPitchClockOp ? Number(fees.pitch_clock_operator_bonus || 0) : 0;
+  const pitchClockBonus = isPitchClockOp
+    ? Number(fees.pitch_clock_operator_bonus || 0)
+    : 0;
 
   const total = baseFee + torontoExtra + crewChiefBonus + pitchClockBonus;
 
