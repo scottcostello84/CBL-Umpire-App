@@ -1,0 +1,13 @@
+{
+  "stadiums": [
+    {
+      "name": "Example Stadium",
+      "city": "Toronto",
+      "address": "123 Example St, Toronto, ON",
+      "meeting_points": [
+        "Main parking lot",
+        "Front gate"
+      ]
+    }
+  ]
+}
