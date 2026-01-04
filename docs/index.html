@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CBL Umpire App (Prototype)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="wrap">
+      <h1>CBL Umpire App (Prototype)</h1>
+      <p class="muted">Pay + bonus calculator (mileage will be added next)</p>
+    </header>
+
+    <main class="wrap grid">
+      <section class="card">
+        <h2>Game Details</h2>
+
+        <label>
+          Stadium
+          <select id="stadiumSelect">
+            <option value="">Loading stadiums…</option>
+          </select>
+        </label>
+
+        <label>
+          Number of umpires
+          <select id="numUmpires">
+            <option value="3" selected>3</option>
+            <option value="4">4 (ASG/Playoffs/Optional)</option>
+          </select>
+        </label>
+
+        <div class="row">
+          <label class="checkbox">
+            <input type="checkbox" id="isToronto" />
+            Toronto game ($10 extra)
+          </label>
+        </div>
+
+        <div class="row">
+          <label class="checkbox">
+            <input type="checkbox" id="isCrewChief" />
+            Crew Chief (+$15)
+          </label>
+        </div>
+
+        <div class="row">
+          <label class="checkbox">
+            <input type="checkbox" id="isPitchClockOp" />
+            Pitch Clock Operator (+$20)
+          </label>
+        </div>
+
+        <label>
+          Base game fee (per umpire) — we’ll wire this to your real fee table later
+          <input id="baseFee" type="number" inputmode="decimal" value="0" min="0" step="1" />
+        </label>
+
+        <button id="calcBtn">Calculate</button>
+
+        <p class="muted small">
+          Note: mileage will be added after we define your mileage rules + meeting points.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Breakdown</h2>
+        <div id="output" class="output muted">Loading rules…</div>
+      </section>
+    </main>
+
+    <footer class="wrap muted small">
+      Internal prototype. Business rules are configurable and negotiable.
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
